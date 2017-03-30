@@ -19,3 +19,17 @@ Route::post('/games', 'GameController@create');
 
 // Games singular routes
 Route::get('/games/{id}', 'GameController@show');
+Route::put('/games/{id}', 'GameController@update');
+Route::delete('/games/{id}', 'GameController@destroy');
+
+// HTML/view responses
+Route::get('/', function () {
+  return view('home');
+});
+
+Route::get('/subview', function () {
+  return view('subview');
+});
+
+Route::get('/styleguide', function () {
+});

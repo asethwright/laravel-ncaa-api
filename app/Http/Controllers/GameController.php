@@ -29,17 +29,25 @@ class GameController extends Controller
   {
     // GET /games/$id
     // show a single game info
+    $game = Game::find($id);
+    return Response::json($game);
   }
 
-  public function update ($id)
+  public function update (Request $request, $id)
   {
     // PUT /games/$id
     // update a single game
+    $game = Game::find($id);
+    $game->update($request->all());
+    return Response::json(['updated' => true]);
   }
 
   public function destroy ($id)
   {
     // DELETE /games/$id
     // remove a single game
+    $game = Game::find($id);
+    $game->delete();
+    return Response::json(['deleted' => true]);
   }
 }
