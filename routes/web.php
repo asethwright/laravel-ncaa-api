@@ -11,28 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-  // documentation goes here
-});
+use Illuminate\Http\Request;
 
-Route::get('/games', function () {
-  $myArray = [
-    [
-      'home' => 'UNC',
-      'away' => 'Arkansas',
-      'ptsHome' => 72,
-      'ptsAway' => 65
-    ],
-    [
-      'home' => 'Duke',
-      'away' => 'South Carolina',
-      'ptsHome' => 81,
-      'ptsAway' => 89
-    ]
-  ];
-  return Response::json($myArray);
-});
+// Games collection routes
+Route::get('/games', 'GameController@index');
+Route::post('/games', 'GameController@create');
 
-Route::get('/games/{id}', function ($id) {
-  return $id;
-});
+// Games singular routes
+Route::get('/games/{id}', 'GameController@show');
